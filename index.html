@@ -10,18 +10,17 @@
   <header class="shell">
     <nav class="nav">
       <div class="nav-left">
-        <a href="#" class="logo" id="logo">Karthikesh</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <span class="icon">🌓</span>
-        </button>
+        <a href="#" class="logo">Karthikesh.</a>
       </div>
       <ul class="links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
         <a href="assets/resume/Karthikesh_Resume.docx" class="resume-link" download>Résumé ↓</a>
       </div>
     </nav>
@@ -30,27 +29,33 @@
   <main>
     <section class="hero">
       <div class="hero-inner shell">
-        <div class="hero-text">
-          <div class="kicker">Automation and DevOps engineer building AI retrieval and agent systems that hold up in production.</div>
-          <h1>Karthikesh Chintalapati</h1>
-          <p class="location">Düsseldorf, Germany · <a href="mailto:karthikeshvarma@gmail.com">karthikeshvarma@gmail.com</a> · +49 1726404067</p>
-          <a href="#experience" class="btn">See the work</a>
-          <p class="note">There's a far more fun version of this <span id="fun">highly recommended</span></p>
+        <div class="kicker">Düsseldorf, Germany</div>
+        <h1>Karthikesh Chintalapati</h1>
+        <p class="tagline">Software & DevOps engineer building <strong>AI automation, agents and RAG systems</strong> that hold up in production.</p>
+        <p class="contact-line"><a href="mailto:karthikeshvarma@gmail.com">karthikeshvarma@gmail.com</a> · +49 1726404067</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn">See the work</a>
+          <a href="#about" class="btn-ghost">Who am I →</a>
         </div>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="shell">
-        <h2 class="section-title">About</h2>
+        <div class="section-head">
+          <span class="section-eyebrow">01 · About</span>
+          <h2 class="section-title">Hi there!</h2>
+        </div>
         <div class="about-grid">
           <div class="about-col">
-            <p>Passionate Automation and DevOps Engineer with expertise in Python, Kubernetes, and CI/CD pipelines, now expanding into Generative AI and RAG architectures. I bring a strong foundation in automating complex cloud workflows and optimizing data processes to build scalable, intelligent solutions.</p>
+            <p>Passionate Software and DevOps Engineer with expertise in <strong>Python, Kubernetes, and CI/CD pipelines</strong>, now expanding into <strong>Generative AI and RAG architectures</strong>. I bring a strong foundation in automating complex cloud workflows and optimizing data processes to build scalable, intelligent solutions.</p>
+            <p>I like automating the boring parts, breaking things before they break in prod, and turning messy data flows into clean pipelines.</p>
           </div>
           <div class="about-col about-meta">
-            <div class="meta-row"><span class="label">Education</span><span class="value">M.Sc. Digital Engineering (Computer Science) · Otto von Guericke University · B.Tech Automobile Engineering · VNRVJIET</span></div>
-            <div class="meta-row"><span class="label">Location</span><span class="value">Düsseldorf, Germany</span></div>
-            <div class="meta-row"><span class="label">Languages</span><span class="value">English (C1) · Hindi (Native) · Telugu (Native) · German (A2)</span></div>
+            <div class="meta-row"><span class="label">Current</span><span class="value">AI Automation Engineer @ Rakuten Symphony</span></div>
+            <div class="meta-row"><span class="label">Education</span><span class="value">M.Sc. Digital Engineering, OVGU Magdeburg</span></div>
+            <div class="meta-row"><span class="label">Based in</span><span class="value">Düsseldorf, Germany</span></div>
+            <div class="meta-row"><span class="label">Languages</span><span class="value">English · Hindi · Telugu · German (learning)</span></div>
           </div>
         </div>
       </div>
@@ -58,59 +63,79 @@
 
     <section id="skills" class="section section-alt">
       <div class="shell">
-        <h2 class="section-title">Toolbox</h2>
-        <p class="section-sub">What I build with</p>
+        <div class="section-head">
+          <span class="section-eyebrow">02 · Toolbox</span>
+          <h2 class="section-title">What I build with</h2>
+        </div>
         <div class="skill-groups">
           <div class="skill-group">
-            <h3>Languages &amp; Query</h3>
+            <h3>Languages & Query</h3>
             <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">Groovy</span><span class="tag">SQL</span><span class="tag">CQL</span>
           </div>
           <div class="skill-group">
-            <h3>Frameworks &amp; Tools</h3>
-            <span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">Docker</span><span class="tag">N8N</span><span class="tag">ollama</span>
+            <h3>Frameworks & Tools</h3>
+            <span class="tag">FastAPI</span><span class="tag">Flask</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">React</span><span class="tag">Vue.js</span><span class="tag">N8N</span><span class="tag">Ollama</span>
           </div>
           <div class="skill-group">
-            <h3>Cloud &amp; DevOps</h3>
-            <span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">Ansible</span><span class="tag">GitHub Actions</span><span class="tag">GitLab</span><span class="tag">Apache AirFlow</span><span class="tag">Databricks</span><span class="tag">Huggingface</span>
+            <h3>Cloud & DevOps</h3>
+            <span class="tag">Kubernetes</span><span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">Ansible</span><span class="tag">GitHub Actions</span><span class="tag">GitLab</span><span class="tag">Apache Airflow</span>
           </div>
           <div class="skill-group">
-            <h3>Data &amp; AI</h3>
-            <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">YugabyteDB</span><span class="tag">Power BI</span><span class="tag">RAG Pipelines</span><span class="tag">AI Agents</span><span class="tag">AI Automation Workflows</span>
+            <h3>Data & AI</h3>
+            <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">YugabyteDB</span><span class="tag">Databricks</span><span class="tag">Hugging Face</span><span class="tag">Power BI</span>
           </div>
         </div>
         <div class="expertise">
-          <strong>Expertise:</strong> AI Automation Workflows · AI Agents · RAG Pipelines · ETL &amp; Data Automation · Data Extraction · Data Cleansing &amp; Transformation · Python Scripting · Cloud Automation · SQL Agents
+          <strong>Expertise</strong>
+          <p>AI Automation Workflows · AI Agents · RAG Pipelines · ETL & Data Automation · Data Cleansing & Transformation · Python Scripting · Cloud Automation · SQL Agents</p>
         </div>
       </div>
     </section>
 
     <section id="experience" class="section">
       <div class="shell">
-        <h2 class="section-title">Experience &amp; Work</h2>
-        <p class="section-sub">Where I've been and what I've built</p>
+        <div class="section-head">
+          <span class="section-eyebrow">03 · Experience</span>
+          <h2 class="section-title">Where I've been</h2>
+        </div>
         <div class="exp-list" id="expList"></div>
+      </div>
+    </section>
+
+    <section id="work" class="section section-alt">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-eyebrow">04 · Selected work</span>
+          <h2 class="section-title">Four things worth opening</h2>
+        </div>
+        <div class="work-grid" id="workGrid"></div>
       </div>
     </section>
 
     <section id="rest" class="section">
       <div class="shell">
-        <h2 class="section-title">The rest of it</h2>
+        <div class="section-head">
+          <span class="section-eyebrow">05 · More</span>
+          <h2 class="section-title">The rest of it</h2>
+        </div>
         <div class="rest-grid">
           <div class="rest-col">
             <h3>Education</h3>
             <div class="edu-item">
-              <strong>M.Sc. Digital Engineering (Computer Science)</strong><br/>Otto von Guericke University
+              <strong>M.Sc. Digital Engineering (Computer Science)</strong>
+              <span>Otto von Guericke University, Magdeburg</span>
             </div>
             <div class="edu-item">
-              <strong>B.Tech, Automobile Engineering</strong><br/>VNRVJ Institute of Engineering and Technology
+              <strong>B.Tech, Automobile Engineering</strong>
+              <span>VNRVJ Institute of Engineering and Technology</span>
             </div>
           </div>
           <div class="rest-col">
             <h3>Languages</h3>
-            <div class="edu-item"><strong>English</strong> · C1</div>
-            <div class="edu-item"><strong>Hindi</strong> · Native</div>
-            <div class="edu-item"><strong>Telugu</strong> · Native</div>
-            <div class="edu-item"><strong>German</strong> · A2 — actively improving</div>
+            <div class="lang-row"><span>English</span><span class="lang-level">C1</span></div>
+            <div class="lang-row"><span>Hindi</span><span class="lang-level">Native</span></div>
+            <div class="lang-row"><span>Telugu</span><span class="lang-level">Native</span></div>
+            <div class="lang-row"><span>German</span><span class="lang-level">A2 · improving</span></div>
           </div>
         </div>
       </div>
@@ -118,12 +143,16 @@
 
     <section id="contact" class="section section-alt">
       <div class="shell">
-        <h2 class="section-title">Let's build something.</h2>
-        <p class="section-sub">Open for cool builds and interesting problems. The fastest way to reach me is email, I answer all of them.</p>
+        <div class="section-head">
+          <span class="section-eyebrow">06 · Contact</span>
+          <h2 class="section-title">Let's build<br/>something.</h2>
+        </div>
+        <p class="section-sub">Open for interesting problems and cool builds. The fastest way to reach me is email — I answer all of them.</p>
         <div class="contacts">
-          <a href="mailto:karthikeshvarma@gmail.com" class="contact-link">karthikeshvarma@gmail.com</a>
+          <a href="mailto:karthikeshvarma@gmail.com" class="contact-link">karthikeshvarma@gmail.com ↗</a>
           <a href="https://www.linkedin.com/in/karthikesh-varma-2b313819b/" class="contact-link" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a href="https://github.com/karthikesh07" class="contact-link" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="assets/resume/Karthikesh_Resume.docx" class="contact-link" download>Résumé ↓</a>
         </div>
         <p class="foot">Karthikesh Chintalapati · Düsseldorf, Germany<br/>Thanks for scrolling all the way down :)</p>
       </div>
