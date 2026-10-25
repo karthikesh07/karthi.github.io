@@ -46,28 +46,56 @@ const works = [
     type: "LLM Agents",
     year: "2025 – present",
     title: "Streaming Agent Platform",
+    role: "AI Automation Engineer · Rakuten Symphony",
     desc: "Two-phase streaming agent with mid-stream tool interception, prompt chaining and a drag-and-drop canvas where OpenAI and Gemini are swappable, composable nodes.",
+    highlights: [
+      "Two-phase streaming: the model plans and streams a response while deciding when to invoke tools mid-stream, then continues with the tool result woven in.",
+      "Mid-stream tool interception with LangChain + FastAPI, so tool calls are executed and validated while the response is still being generated.",
+      "OpenAI and Gemini integrated behind one orchestration layer — composable nodes, prompt chaining, dynamic model selection — on a visual drag-and-drop canvas.",
+      "Owned end to end: agent orchestration, tool use and the React SPA shipped solo.",
+    ],
     tags: ["LangChain", "FastAPI", "React", "Streaming"],
   },
   {
     type: "SQL AI",
     year: "2025",
     title: "NL→SQL Across Four Databases",
+    role: "AI Automation Engineer · Rakuten Symphony",
     desc: "Natural-language querying with live schema injection as LLM context — one grounded interface over PostgreSQL, MySQL, SQLite and YugabyteDB.",
+    highlights: [
+      "Live schema injection: tables, columns and types are injected as LLM context at query time, so generated SQL is grounded in the actual database shape — not hallucinated.",
+      "One natural-language interface across PostgreSQL, MySQL, SQLite and YugabyteDB, with dialect-aware SQL and CQL generation.",
+      "Schema changes propagate automatically into prompts — no prompt rewrites when the database evolves.",
+      "Built for both analysts and engineers: ask in plain language, get auditable queries and results back.",
+    ],
     tags: ["Python", "FastAPI", "SQL", "CQL", "YugabyteDB"],
   },
   {
     type: "Thesis · Data Viz",
     year: "2024 – 2025",
     title: "Supply Chain Simulation Visualizer",
+    role: "M.Sc. Thesis · Otto von Guericke University",
     desc: "Master thesis: dynamic geospatial visualization for macroscopic supply chain simulation models — Flask APIs stream simulation data with real-time front-end updates.",
+    highlights: [
+      "Dynamic web-based geospatial visualization of macroscopic supply chain simulation models.",
+      "Flask APIs load and serve simulation data on demand, enabling real-time front-end updates.",
+      "Efficient handling of large simulation datasets without freezing the browser.",
+      "Folium and Dash chosen for map rendering and interactive dashboards over heavyweight alternatives.",
+    ],
     tags: ["Python", "Flask", "Folium", "Dash"],
   },
   {
     type: "ML Research",
     year: "2023",
     title: "Vessel Segmentation with Deep Learning",
+    role: "Research Project · OVGU",
     desc: "MRI vessel segmentation improved via maximum intensity projection, comparing U-Net and U-Net MSS architectures across vessel sizes.",
+    highlights: [
+      "Manual segmentation of MRI images with Ilastik and 3D-Slicer to build ground truth.",
+      "Maximum intensity projection (MIP) preprocessing to sharpen thin-vessel visibility before training.",
+      "Compared U-Net and U-Net MSS architectures across different vessel size classes.",
+      "Python + PyTorch training and evaluation pipeline from scratch.",
+    ],
     tags: ["Python", "PyTorch", "Ilastik", "3D-Slicer"],
   },
 ];
@@ -121,11 +149,14 @@ experiences.forEach((exp, i) => {
   expList.appendChild(item);
 });
 
-/* ---------- Work: typographic cards ---------- */
+/* ---------- Work: typographic cards + case write-up ---------- */
 const workGrid = document.getElementById("workGrid");
 works.forEach((w, i) => {
   const card = document.createElement("article");
   card.className = "work-card reveal";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `Open case study: ${w.title}`);
   card.innerHTML = `
     <div class="work-cover" aria-hidden="true">
       <span class="cover-num">${String(i + 1).padStart(2, "0")}</span>
@@ -136,9 +167,74 @@ works.forEach((w, i) => {
       <h3 class="work-title">${w.title}</h3>
       <p class="work-desc">${w.desc}</p>
       <div class="work-tags">${w.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+      <span class="work-hint" aria-hidden="true">View write-up →</span>
     </div>
   `;
+
+  const openFn = () => openCase(w, card);
+  card.addEventListener("click", openFn);
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openFn();
+    }
+  });
   workGrid.appendChild(card);
+});
+
+/* ---------- Case write-up overlay ---------- */
+function buildCaseModal() {
+  const modal = document.createElement("div");
+  modal.className = "case-modal";
+  modal.id = "caseModal";
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="case-backdrop" data-close></div>
+    <div class="case-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
+      <button class="case-close" type="button" data-close aria-label="Close case study">✕</button>
+      <div class="case-body" id="caseBody"></div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  return modal;
+}
+const caseModal = buildCaseModal();
+const caseBody = document.getElementById("caseBody");
+let lastFocused = null;
+
+function openCase(w, card) {
+  lastFocused = card || document.activeElement;
+  caseBody.innerHTML = `
+    <div class="case-topline">
+      <span class="case-type">${w.type}</span>
+      <span class="case-year">${w.year}</span>
+    </div>
+    <h2 class="case-title" id="caseTitle">${w.title}</h2>
+    <p class="case-role">${w.role}</p>
+    <p class="case-desc">${w.desc}</p>
+    <h3 class="case-heading">Highlights</h3>
+    <ul class="case-points">${w.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>
+    <h3 class="case-heading">Stack</h3>
+    <div class="exp-tags">${w.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+  `;
+  caseModal.hidden = false;
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => caseModal.classList.add("open"));
+  caseModal.querySelector(".case-close").focus();
+}
+
+function closeCase() {
+  caseModal.classList.remove("open");
+  document.body.style.overflow = "";
+  setTimeout(() => { caseModal.hidden = true; }, 250);
+  if (lastFocused) lastFocused.focus();
+}
+
+caseModal.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]")) closeCase();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !caseModal.hidden) closeCase();
 });
 
 /* ---------- Theme ---------- */
