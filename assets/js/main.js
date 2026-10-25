@@ -7,12 +7,12 @@ const experiences = [
     role: "AI Automation Engineer",
     dates: "Nov 2025 – present",
     location: "Düsseldorf, Germany",
-    tags: ["LangChain", "FastAPI", "OpenAI", "Gemini", "React", "YugabyteDB", "SQL/CQL"],
+    tags: ["LangChain", "LangGraph", "FastAPI", "OpenAI", "Gemini", "React", "YugabyteDB"],
     bullets: [
-      "Built a two-phase LLM streaming agent with mid-stream tool interception using LangChain and FastAPI — replicating core production agentic patterns.",
-      "Integrated OpenAI and Google Gemini as configurable, composable nodes with prompt chaining and dynamic model selection in a visual drag-and-drop workflow canvas.",
-      "Implemented a natural language to SQL/CQL pipeline with live schema injection as LLM context, querying across PostgreSQL, MySQL, SQLite, and YugabyteDB.",
-      "Owned the full stack — LLM orchestration, tool use, and React SPA — delivering an end-to-end AI-powered product independently.",
+      "Designed a two-phase LLM streaming agent with mid-stream tool interception (LangChain + FastAPI), letting the model call tools safely while a response is still streaming to the user.",
+      "Integrated OpenAI and Gemini behind one orchestration layer — composable nodes, prompt chaining and dynamic model selection — surfaced in a visual drag-and-drop workflow canvas.",
+      "Built a natural-language → SQL/CQL agent pipeline with live schema injection as LLM context, unifying PostgreSQL, MySQL, SQLite and YugabyteDB behind a single queried interface.",
+      "Owned the product end to end — agent orchestration, tool use and the React SPA — shipping a production AI automation system solo.",
     ],
   },
   {
@@ -20,12 +20,12 @@ const experiences = [
     role: "Software Engineer",
     dates: "Dec 2022 – Oct 2025",
     location: "Düsseldorf, Germany",
-    tags: ["Python", "Ansible", "YugabyteDB", "ETL", "Kubernetes", "Robin (private cloud)"],
+    tags: ["Python", "Ansible", "YugabyteDB", "ETL", "Kubernetes", "Apache Airflow", "Robin (private cloud)"],
     bullets: [
-      "Developed and optimized ETL processes to extract data from APIs, leveraging Python for KPI extraction and loading structured datasets into YugabyteDB.",
-      "Orchestrated end-to-end automation of multi-node cluster upgrades using Python and Ansible, reducing manual intervention by over 90% and minimizing human error.",
-      "Automated recurring data preparation and reporting workflows, improving processing efficiency and increasing consistency of analytical outputs.",
-      "Involved in various phases of SDLC — analysis, design and development of a Custom Automation product using private cloud (Robin).",
+      "Built and optimized ETL processes — API-sourced, Python-based KPI extraction — loading structured datasets into YugabyteDB for downstream analytical workloads.",
+      "Orchestrated end-to-end automation of multi-node Kubernetes cluster upgrades with Python and Ansible, cutting manual intervention by over 90% and removing a whole class of human error.",
+      "Automated recurring data preparation and reporting workflows, raising throughput and consistency of analytical outputs.",
+      "Worked across the full SDLC — analysis, design and development of a custom automation product on the Robin private cloud platform.",
     ],
   },
   {
@@ -36,31 +36,31 @@ const experiences = [
     tags: ["Vue.js", "User research", "Usability testing"],
     bullets: [
       "Designed and implemented reusable Vue.js components to enhance application functionality.",
-      "Participated in user research and usability testing to inform design decisions for the landing page.",
+      "Ran user research and usability testing to ground landing page design decisions in real user feedback.",
     ],
   },
 ];
 
 const works = [
   {
-    type: "AI System",
-    year: "2025",
-    title: "LLM Streaming Agent Platform",
-    desc: "A two-phase LLM streaming agent with mid-stream tool interception and a visual drag-and-drop workflow canvas, with OpenAI and Gemini as switchable nodes.",
-    tags: ["LangChain", "FastAPI", "React", "YugabyteDB"],
+    type: "LLM Agents",
+    year: "2025 – present",
+    title: "Streaming Agent Platform",
+    desc: "Two-phase streaming agent with mid-stream tool interception, prompt chaining and a drag-and-drop canvas where OpenAI and Gemini are swappable, composable nodes.",
+    tags: ["LangChain", "FastAPI", "React", "Streaming"],
   },
   {
-    type: "Data",
+    type: "SQL AI",
     year: "2025",
-    title: "ETL & KPI Pipeline",
-    desc: "API-sourced KPI extraction pipeline loading structured datasets into YugabyteDB, with orchestrated scheduling and reporting automation.",
-    tags: ["Python", "YugabyteDB", "Ansible", "Airflow"],
+    title: "NL→SQL Across Four Databases",
+    desc: "Natural-language querying with live schema injection as LLM context — one grounded interface over PostgreSQL, MySQL, SQLite and YugabyteDB.",
+    tags: ["Python", "FastAPI", "SQL", "CQL", "YugabyteDB"],
   },
   {
-    type: "Tool",
-    year: "2024",
+    type: "Thesis · Data Viz",
+    year: "2024 – 2025",
     title: "Supply Chain Simulation Visualizer",
-    desc: "Master thesis: a dynamic geospatial visualization tool for macroscopic supply chain simulation models, with real-time updates over Flask APIs.",
+    desc: "Master thesis: dynamic geospatial visualization for macroscopic supply chain simulation models — Flask APIs stream simulation data with real-time front-end updates.",
     tags: ["Python", "Flask", "Folium", "Dash"],
   },
   {
@@ -104,17 +104,17 @@ experiences.forEach((exp, i) => {
   const show = item.querySelector(".exp-show");
   const details = item.querySelector(".exp-details");
   const arrow = item.querySelector(".exp-arrow");
-  const settle = (open) => `${open ? "Hide" : "Show"} details`;
 
-  const setOpenState = (open) => {
+  let open = false;
+  const setOpen = (state) => {
+    open = state;
     details.classList.toggle("open", open);
     head.setAttribute("aria-expanded", open);
     show.setAttribute("aria-expanded", open);
-    show.textContent = settle(open);
+    show.textContent = open ? "Hide details" : "Show details";
     arrow.style.transform = open ? "rotate(180deg)" : "";
   };
-  let open = false;
-  const toggle = () => setOpenState((open = !open));
+  const toggle = () => setOpen(!open);
 
   head.addEventListener("click", toggle);
   show.addEventListener("click", toggle);
