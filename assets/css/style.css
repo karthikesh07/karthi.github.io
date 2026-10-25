@@ -921,49 +921,32 @@ img {
   color: var(--muted);
 }
 
-/* ---------- Publications ---------- */
-.pub-item {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
+.paper-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.pub-title {
-  font-size: 13.5px;
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--fg);
-  text-decoration: none;
-  transition: color 200ms var(--ease);
+.case-link {
+  margin-top: 26px;
 }
 
-.pub-title:hover {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.case-link:hover {
+  transform: none;
 }
 
-.pub-item span {
-  font-size: 12px;
-  color: var(--muted);
+.paper-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
-.pub-more {
-  padding-top: 12px;
+.case-link {
+  margin-top: 26px;
 }
 
-.pub-more a {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.pub-more a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.case-link:hover {
+  transform: none;
 }
 
 /* ---------- Contact ---------- */
@@ -1098,6 +1081,9 @@ html.js .reveal.in-view {
   }
   .rest-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .paper-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .rest-grid.three {
     grid-template-columns: 1fr 1.4fr 0.8fr;

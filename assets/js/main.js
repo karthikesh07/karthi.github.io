@@ -100,6 +100,54 @@ const works = [
   },
 ];
 
+const papers = [
+  {
+    type: "Workshop Paper",
+    year: "2024",
+    title: "SPOCKMIP",
+    fullTitle: "Segmentation of Vessels in MRAs with Enhanced Continuity using Maximum Intensity Projection as Loss",
+    role: "Co-author · arXiv 2407.08655 · HC@AIxIA 2024 (CEUR-WS)",
+    desc: "A loss-function approach: Maximum Intensity Projection becomes part of the training objective, so networks learn spatial continuity across 3D axes instead of treating every slice in isolation.",
+    highlights: [
+      "Proposed two MIP-based methods — projecting label segmentation on a single (z-axis) and on multiple perceivable axes of the 3D volume.",
+      "Evaluated the MIP loss term on two deep learning architectures, improving overall segmentation and vessel continuity.",
+      "Peer-reviewed and published in the HC@AIxIA 2024 workshop proceedings (CEUR-WS).",
+    ],
+    tags: ["Deep Learning", "Loss Design", "3D Segmentation"],
+    link: "https://arxiv.org/abs/2407.08655",
+  },
+  {
+    type: "Conference",
+    year: "2023",
+    title: "Enhancing Vessel Continuity with MIP as Loss",
+    fullTitle: "Enhancing Vessel Continuity in Deep Learning based Segmentation using Maximum Intensity Projection as Loss",
+    role: "Co-author · ISMRM & ISMRT Annual Meeting 2023",
+    desc: "The conference version of the MIP-as-loss idea. Small vessels of 1–2 voxels in diameter are where patch-based segmentation fails — spatial correlation of features is what recovers them.",
+    highlights: [
+      "Targeted the hardest case: sub-voxel vessels where semi-supervised patch-based approaches broke continuity.",
+      "Quantitatively improved segmentation while improving vessel continuity, evident across ROI visual examinations.",
+      "Presented at the ISMRM & ISMRT Annual Meeting & Exhibition, the leading MRI research conference.",
+    ],
+    tags: ["MRI", "Segmentation", "3D Segmentation"],
+    link: "https://archive.ismrm.org/2023/3769.html",
+  },
+  {
+    type: "Benchmark",
+    year: "2024",
+    title: "SMILE-UHURA Challenge",
+    fullTitle: "SMILE-UHURA Challenge — Small Vessel Segmentation at Mesoscopic Scale from Ultra-High Resolution 7T Magnetic Resonance Angiograms",
+    role: "Co-author · arXiv 2411.09593 · ISBI 2023 challenge",
+    desc: "The first public benchmark for small-vessel segmentation from ultra-high-resolution 7T MRA data, run in conjunction with ISBI 2023. Contributed to the challenge paper evaluating submitted methods.",
+    highlights: [
+      "Benchmarked deep learning methods against a standardized, publicly annotated 7T dataset — top submissions reached Dice scores of up to 0.838.",
+      "Annotated data scarcity in medical imaging is exactly the gap this challenge paper documents and addresses.",
+      "Demonstrates competitive evaluation discipline: identical data, metrics and baselines across methods.",
+    ],
+    tags: ["Benchmark", "Medical Imaging", "Competitive ML"],
+    link: "https://arxiv.org/abs/2411.09593",
+  },
+];
+
 /* ---------- Experience: numbered timeline ---------- */
 const expList = document.getElementById("expList");
 experiences.forEach((exp, i) => {
@@ -182,6 +230,38 @@ works.forEach((w, i) => {
   workGrid.appendChild(card);
 });
 
+/* ---------- Research: paper cards ---------- */
+const paperGrid = document.getElementById("paperGrid");
+papers.forEach((p, i) => {
+  const card = document.createElement("article");
+  card.className = "work-card reveal";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `Open paper summary: ${p.title}`);
+  card.innerHTML = `
+    <div class="work-cover" aria-hidden="true">
+      <span class="cover-num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="cover-type">${p.type}</span>
+    </div>
+    <div class="card-body">
+      <div class="work-topline">${p.year}</div>
+      <h3 class="work-title">${p.title}</h3>
+      <p class="work-desc">${p.desc}</p>
+      <div class="work-tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+      <span class="work-hint" aria-hidden="true">Read the summary →</span>
+    </div>
+  `;
+  const openFn = () => openCase(p, card);
+  card.addEventListener("click", openFn);
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openFn();
+    }
+  });
+  paperGrid.appendChild(card);
+});
+
 /* ---------- Case write-up overlay ---------- */
 function buildCaseModal() {
   const modal = document.createElement("div");
@@ -209,13 +289,14 @@ function openCase(w, card) {
       <span class="case-type">${w.type}</span>
       <span class="case-year">${w.year}</span>
     </div>
-    <h2 class="case-title" id="caseTitle">${w.title}</h2>
+    <h2 class="case-title" id="caseTitle">${w.fullTitle || w.title}</h2>
     <p class="case-role">${w.role}</p>
     <p class="case-desc">${w.desc}</p>
     <h3 class="case-heading">Highlights</h3>
     <ul class="case-points">${w.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>
     <h3 class="case-heading">Stack</h3>
     <div class="exp-tags">${w.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+    ${w.link ? `<a class="btn case-link" href="${w.link}" target="_blank" rel="noopener">Read the paper ↗</a>` : ""}
   `;
   caseModal.hidden = false;
   document.body.style.overflow = "hidden";
@@ -300,7 +381,7 @@ const sectionSpy = new IntersectionObserver(
   },
   { rootMargin: "-35% 0px -55% 0px" }
 );
-["about", "skills", "experience", "work", "contact"].forEach((id) => {
+["about", "skills", "experience", "work", "research", "contact"].forEach((id) => {
   const el = document.getElementById(id);
   if (el) sectionSpy.observe(el);
 });
