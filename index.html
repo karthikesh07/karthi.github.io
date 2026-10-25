@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karthikesh Chintalapati | AI Automation Engineer</title>
+  <title>Karthikesh Chintalapati — AI Automation Engineer</title>
+  <meta name="description" content="Software & DevOps engineer in Düsseldorf building AI automation, agents and RAG systems that hold up in production." />
+  <meta property="og:title" content="Karthikesh Chintalapati — AI Automation Engineer" />
+  <meta property="og:description" content="Building AI automation, agents and RAG systems that hold up in production." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f62fe'/><text x='50' y='72' font-size='58' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='white'>K</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <header class="shell">
-    <nav class="nav">
+  <header class="site-header" id="siteHeader">
+    <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-left">
-        <a href="#" class="logo">Karthikesh.</a>
+        <a href="#" class="logo">Karthikesh<span class="logo-dot">.</span></a>
       </div>
-      <ul class="links">
+      <ul class="links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -20,7 +28,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">☾</button>
         <a href="assets/resume/Karthikesh_Resume.docx" class="resume-link" download>Résumé ↓</a>
       </div>
     </nav>
@@ -28,13 +36,16 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner shell">
-        <div class="kicker">Düsseldorf, Germany</div>
-        <h1>Karthikesh Chintalapati</h1>
+      <div class="shell">
+        <div class="status-chip"><span class="dot" aria-hidden="true"></span>Open for interesting problems</div>
+        <h1 class="hero-title">Karthikesh<br/>Chintalapati</h1>
         <p class="tagline">Software & DevOps engineer building <strong>AI automation, agents and RAG systems</strong> that hold up in production.</p>
-        <p class="contact-line"><a href="mailto:karthikeshvarma@gmail.com">karthikeshvarma@gmail.com</a> · +49 1726404067</p>
+        <p class="contact-line">
+          <a href="mailto:karthikeshvarma@gmail.com">karthikeshvarma@gmail.com</a>
+          <span aria-hidden="true">·</span> Düsseldorf, Germany
+        </p>
         <div class="hero-actions">
-          <a href="#work" class="btn">See the work</a>
+          <a href="#work" class="btn">See the work ↓</a>
           <a href="#about" class="btn-ghost">Who am I →</a>
         </div>
       </div>
@@ -42,31 +53,31 @@
 
     <section id="about" class="section">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">01 · About</span>
+        <header class="section-head">
+          <span class="section-eyebrow">About</span>
           <h2 class="section-title">Hi there!</h2>
-        </div>
+        </header>
         <div class="about-grid">
           <div class="about-col">
-            <p>Passionate Software and DevOps Engineer with expertise in <strong>Python, Kubernetes, and CI/CD pipelines</strong>, now expanding into <strong>Generative AI and RAG architectures</strong>. I bring a strong foundation in automating complex cloud workflows and optimizing data processes to build scalable, intelligent solutions.</p>
+            <p>Software and DevOps engineer with expertise in <strong>Python, Kubernetes, and CI/CD pipelines</strong>, now expanding into <strong>Generative AI and RAG architectures</strong>. Strong foundation in automating complex cloud workflows and optimizing data processes to build scalable, intelligent solutions.</p>
             <p>I like automating the boring parts, breaking things before they break in prod, and turning messy data flows into clean pipelines.</p>
           </div>
-          <div class="about-col about-meta">
+          <aside class="about-meta">
             <div class="meta-row"><span class="label">Current</span><span class="value">AI Automation Engineer @ Rakuten Symphony</span></div>
             <div class="meta-row"><span class="label">Education</span><span class="value">M.Sc. Digital Engineering, OVGU Magdeburg</span></div>
             <div class="meta-row"><span class="label">Based in</span><span class="value">Düsseldorf, Germany</span></div>
             <div class="meta-row"><span class="label">Languages</span><span class="value">English · Hindi · Telugu · German (learning)</span></div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
     <section id="skills" class="section section-alt">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">02 · Toolbox</span>
+        <header class="section-head">
+          <span class="section-eyebrow">Toolbox</span>
           <h2 class="section-title">What I build with</h2>
-        </div>
+        </header>
         <div class="skill-groups">
           <div class="skill-group">
             <h3>Languages & Query</h3>
@@ -94,33 +105,33 @@
 
     <section id="experience" class="section">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">03 · Experience</span>
+        <header class="section-head">
+          <span class="section-eyebrow">Experience</span>
           <h2 class="section-title">Where I've been</h2>
-        </div>
+        </header>
         <div class="exp-list" id="expList"></div>
       </div>
     </section>
 
     <section id="work" class="section section-alt">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">04 · Selected work</span>
+        <header class="section-head">
+          <span class="section-eyebrow">Selected work</span>
           <h2 class="section-title">Four things worth opening</h2>
-        </div>
+        </header>
         <div class="work-grid" id="workGrid"></div>
       </div>
     </section>
 
     <section id="rest" class="section">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">05 · More</span>
+        <header class="section-head">
+          <span class="section-eyebrow">More</span>
           <h2 class="section-title">The rest of it</h2>
-        </div>
+        </header>
         <div class="rest-grid">
-          <div class="rest-col">
-            <h3>Education</h3>
+          <div>
+            <h3 class="rest-heading">Education</h3>
             <div class="edu-item">
               <strong>M.Sc. Digital Engineering (Computer Science)</strong>
               <span>Otto von Guericke University, Magdeburg</span>
@@ -130,8 +141,8 @@
               <span>VNRVJ Institute of Engineering and Technology</span>
             </div>
           </div>
-          <div class="rest-col">
-            <h3>Languages</h3>
+          <div>
+            <h3 class="rest-heading">Languages</h3>
             <div class="lang-row"><span>English</span><span class="lang-level">C1</span></div>
             <div class="lang-row"><span>Hindi</span><span class="lang-level">Native</span></div>
             <div class="lang-row"><span>Telugu</span><span class="lang-level">Native</span></div>
@@ -143,18 +154,24 @@
 
     <section id="contact" class="section section-alt">
       <div class="shell">
-        <div class="section-head">
-          <span class="section-eyebrow">06 · Contact</span>
+        <header class="section-head">
+          <span class="section-eyebrow">Contact</span>
           <h2 class="section-title">Let's build<br/>something.</h2>
-        </div>
+        </header>
         <p class="section-sub">Open for interesting problems and cool builds. The fastest way to reach me is email — I answer all of them.</p>
-        <div class="contacts">
-          <a href="mailto:karthikeshvarma@gmail.com" class="contact-link">karthikeshvarma@gmail.com ↗</a>
-          <a href="https://www.linkedin.com/in/karthikesh-varma-2b313819b/" class="contact-link" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://github.com/karthikesh07" class="contact-link" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="assets/resume/Karthikesh_Resume.docx" class="contact-link" download>Résumé ↓</a>
-        </div>
-        <p class="foot">Karthikesh Chintalapati · Düsseldorf, Germany<br/>Thanks for scrolling all the way down :)</p>
+        <ul class="contacts">
+          <li class="contact-row">
+            <a href="mailto:karthikeshvarma@gmail.com" class="contact-link">karthikeshvarma@gmail.com ↗</a>
+            <button class="copy-btn" type="button" data-copy="karthikeshvarma@gmail.com">Copy</button>
+          </li>
+          <li><a href="https://www.linkedin.com/in/karthikesh-varma-2b313819b/" class="contact-link" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://github.com/karthikesh07" class="contact-link" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="assets/resume/Karthikesh_Resume.docx" class="contact-link" download>Résumé ↓</a></li>
+        </ul>
+        <footer class="foot">
+          <p>Karthikesh Chintalapati · Düsseldorf, Germany</p>
+          <p>Thanks for scrolling all the way down :) · Built with HTML, CSS & vanilla JS</p>
+        </footer>
       </div>
     </section>
   </main>
