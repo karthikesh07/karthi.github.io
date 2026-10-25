@@ -737,6 +737,10 @@ img {
 }
 
 /* ---------- Case write-up overlay ---------- */
+.case-modal[hidden] {
+  display: none;
+}
+
 .case-modal {
   position: fixed;
   inset: 0;
