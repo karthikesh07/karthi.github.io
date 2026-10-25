@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karthi | Marketing &amp; Creative Director</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="shell">
+    <nav class="nav">
+      <a href="#" class="logo" id="logo">Karthi.</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="icon">🌓</span>
+      </button>
+      <ul class="links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge">Full-stack marketing &amp; creative director</span>
+        <h1>I build brands,<br/> campaigns,<br/> and products.</h1>
+        <p class="subtitle">Freelance · Consulting · Brand strategy · AI-powered creative tools.</p>
+        <a href="#work" class="btn">Selected work</a>
+      </div>
+      <div class="hero-visual">
+        <div class="morph" id="morph"></div>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <h2 class="section-title">Selected work</h2>
+      <div class="grid" id="workGrid"></div>
+      <div class="case-detail" id="caseDetail">
+        <button class="close" id="closeCase">&times;</button>
+        <div class="case-content" id="caseContent"></div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>About</h2>
+          <p>I consult and collaborate with brands, agencies, and startups globally as a fractional marketing &amp; creative director. I create strategies and creative solutions that are effective, relevant, and genuinely loved by people.</p>
+          <p>Previously: Yandex Market, Alrosa (Luminous Diamonds), BBDO, DDB. Work recognized at Cannes Lions, Clio, D&AD, Webby, Epica, Eurobest, ADCR, Red Dot.</p>
+        </div>
+        <div class="about-meta">
+          <div class="meta-item"><span class="label">Focus</span><span class="value">Brand strategy, go-to-market, campaign language</span></div>
+          <div class="meta-item"><span class="label">Location</span><span class="value">Global / Remote</span></div>
+          <div class="meta-item"><span class="label">Available for</span><span class="value">Freelance &amp; consulting</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-inner">
+        <h2>Let's work together.</h2>
+        <p>Open to brand strategy, creative direction, and AI creative tool projects worldwide.</p>
+        <div class="contacts">
+          <a href="mailto:hello@example.com" class="contact-link">Email · hello@example.com</a>
+          <a href="https://linkedin.com/in/karthi" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://twitter.com/karthi" class="contact-link" target="_blank" rel="noopener">Twitter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p class="foot">&copy; <span id="year"></span> Karthi. Built with HTML, CSS, vanilla JS &amp; GSAP.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
