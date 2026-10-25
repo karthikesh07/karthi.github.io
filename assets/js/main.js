@@ -40,33 +40,48 @@ const experiences = [
 
 const works = [
   {
-    badge: "2026 · AI",
-    title: "LLM Streaming Agent Platform",
-    desc: "Two-phase LLM streaming agent with tool interception, visual drag-and-drop workflow canvas, dynamic model selection across OpenAI and Gemini.",
+    company: "Personal Project",
+    role: "LLM Streaming Agent Platform",
+    dates: "2026 · AI",
+    location: "",
     tags: "LangChain · FastAPI · React · YugabyteDB",
+    bullets: [
+      "Two-phase LLM streaming agent with tool interception, visual drag-and-drop workflow canvas, dynamic model selection across OpenAI and Gemini.",
+    ],
   },
   {
-    badge: "2025 · Data",
-    title: "ETL & KPI Pipeline",
-    desc: "API data extraction and KPI pipeline loading structured datasets into YugabyteDB, built with Python and orchestrated with Ansible.",
+    company: "Personal Project",
+    role: "ETL & KPI Pipeline",
+    dates: "2025 · Data",
+    location: "",
     tags: "Python · YugabyteDB · Ansible · ETL",
+    bullets: [
+      "API data extraction and KPI pipeline loading structured datasets into YugabyteDB, built with Python and orchestrated with Ansible.",
+    ],
   },
   {
-    badge: "2025 · Cloud",
-    title: "Multi-node Cluster Upgrade Automation",
-    desc: "End-to-end automation of multi-node cluster upgrades using Python and Ansible, cutting manual intervention by over 90%.",
+    company: "Personal Project",
+    role: "Multi-node Cluster Upgrade Automation",
+    dates: "2025 · Cloud",
+    location: "",
     tags: "Python · Ansible · Kubernetes",
+    bullets: [
+      "End-to-end automation of multi-node cluster upgrades using Python and Ansible, cutting manual intervention by over 90%.",
+    ],
   },
   {
-    badge: "2022 · Frontend",
-    title: "WeDance Landing Page",
-    desc: "Reusable Vue.js components and landing page informed by user research and usability testing.",
+    company: "Personal Project",
+    role: "WeDance Landing Page",
+    dates: "2022 · Frontend",
+    location: "",
     tags: "Vue.js · Frontend",
+    bullets: [
+      "Reusable Vue.js components and landing page informed by user research and usability testing.",
+    ],
   },
 ];
 
-const expList = document.getElementById("expList");
-experiences.forEach((exp) => {
+const allItems = [...experiences, ...works];
   const item = document.createElement("article");
   item.className = "exp-item";
   item.innerHTML = `
