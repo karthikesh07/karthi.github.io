@@ -82,6 +82,9 @@ const works = [
 ];
 
 const allItems = [...experiences, ...works];
+
+const expList = document.getElementById("expList");
+allItems.forEach((exp) => {
   const item = document.createElement("article");
   item.className = "exp-item";
   item.innerHTML = `
@@ -119,24 +122,6 @@ const allItems = [...experiences, ...works];
   expList.appendChild(item);
 });
 
-const workGrid = document.getElementById("workGrid");
-works.forEach((w) => {
-  const card = document.createElement("article");
-  card.className = "work-card";
-  card.innerHTML = `
-    <div class="work-thumb">
-      <img src="https://picsum.photos/seed/k${Math.random()}/700/400" alt="${w.title}" loading="lazy" />
-    </div>
-    <div class="work-body">
-      <div class="work-badge">${w.badge}</div>
-      <h3>${w.title}</h3>
-      <p>${w.desc}</p>
-      <div class="work-tags">${w.tags.split(" · ").map((t) => `<span class="tag">${t}</span>`).join("")}</div>
-    </div>
-  `;
-  workGrid.appendChild(card);
-});
-
 // Theme toggle
 const toggle = document.getElementById("themeToggle");
 const html = document.documentElement;
@@ -150,7 +135,7 @@ toggle.addEventListener("click", () => {
 
 // GSAP reveal
 gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray(".exp-item, .work-card, .section-title").forEach((el, i) => {
+gsap.utils.toArray(".exp-item, .section-title").forEach((el, i) => {
   gsap.from(el, {
     scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none reverse" },
     opacity: 0, y: 24, duration: 0.6, delay: i * 0.08,
