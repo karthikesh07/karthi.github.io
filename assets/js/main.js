@@ -71,7 +71,7 @@ experiences.forEach((exp) => {
   item.className = "exp-item";
   item.innerHTML = `
     <div class="exp-head" aria-expanded="false">
-      <div>
+      <div class="exp-main">
         <h3>${exp.role}</h3>
         <div class="exp-company">${exp.company}</div>
       </div>
