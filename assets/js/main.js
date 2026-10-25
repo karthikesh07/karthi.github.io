@@ -1,5 +1,8 @@
+document.documentElement.classList.add("js");
+
 const experiences = [
   {
+    type: "Job",
     company: "Rakuten Symphony Deutschland",
     role: "AI Automation Engineer",
     dates: "Nov 2025 – Present",
@@ -13,6 +16,7 @@ const experiences = [
     ],
   },
   {
+    type: "Job",
     company: "Rakuten Symphony Deutschland",
     role: "Software Engineer",
     dates: "Dec 2022 – Oct 2025",
@@ -26,6 +30,7 @@ const experiences = [
     ],
   },
   {
+    type: "Internship",
     company: "WeDance",
     role: "Intern – Frontend Developer",
     dates: "June 2022 – Nov 2022",
@@ -36,67 +41,47 @@ const experiences = [
       "Participated in user research and usability testing to inform design decisions for landing page.",
     ],
   },
-];
-
-const works = [
   {
-    company: "Personal Project",
-    role: "LLM Streaming Agent Platform",
-    dates: "2026 · AI",
-    location: "",
-    tags: "LangChain · FastAPI · React · YugabyteDB",
+    type: "Project",
+    company: "Master Thesis · OVGU",
+    role: "Supply Chain Simulation Visualizer",
+    dates: "2025 · Tool",
+    location: "Magdeburg, Germany",
+    tags: "Python · Flask · Folium · Dash",
     bullets: [
-      "Two-phase LLM streaming agent with tool interception, visual drag-and-drop workflow canvas, dynamic model selection across OpenAI and Gemini.",
+      "Built a dynamic web-based geospatial visualization tool for macroscopic supply chain simulation models.",
+      "Flask APIs serve simulation data to the front-end with real-time updates and efficient handling of large datasets.",
     ],
   },
   {
-    company: "Personal Project",
-    role: "ETL & KPI Pipeline",
-    dates: "2025 · Data",
+    type: "Project",
+    company: "Research Project",
+    role: "Vessel Segmentation with Deep Learning",
+    dates: "Research · ML",
     location: "",
-    tags: "Python · YugabyteDB · Ansible · ETL",
+    tags: "Python · PyTorch · Ilastik · 3D-Slicer",
     bullets: [
-      "API data extraction and KPI pipeline loading structured datasets into YugabyteDB, built with Python and orchestrated with Ansible.",
-    ],
-  },
-  {
-    company: "Personal Project",
-    role: "Multi-node Cluster Upgrade Automation",
-    dates: "2025 · Cloud",
-    location: "",
-    tags: "Python · Ansible · Kubernetes",
-    bullets: [
-      "End-to-end automation of multi-node cluster upgrades using Python and Ansible, cutting manual intervention by over 90%.",
-    ],
-  },
-  {
-    company: "Personal Project",
-    role: "WeDance Landing Page",
-    dates: "2022 · Frontend",
-    location: "",
-    tags: "Vue.js · Frontend",
-    bullets: [
-      "Reusable Vue.js components and landing page informed by user research and usability testing.",
+      "Manual segmentation of MRI images using Ilastik and 3D-Slicer, improved with maximum intensity projection.",
+      "Segmented blood vessels of varying sizes across architectures including U-Net and U-Net MSS.",
     ],
   },
 ];
-
-const allItems = [...experiences, ...works];
 
 const expList = document.getElementById("expList");
-allItems.forEach((exp) => {
+experiences.forEach((exp, idx) => {
   const item = document.createElement("article");
-  item.className = "exp-item";
+  item.className = "exp-item reveal";
   item.innerHTML = `
     <div class="exp-head" aria-expanded="false">
+      <span class="exp-num">${String(idx + 1).padStart(2, "0")}</span>
       <div class="exp-main">
         <h3>${exp.role}</h3>
         <div class="exp-company">${exp.company}</div>
       </div>
       <div class="exp-dates">${exp.dates}</div>
-      <span class="exp-arrow">▼</span>
+      <span class="exp-arrow">▾</span>
     </div>
-    <div class="exp-meta">${exp.location}</div>
+    <div class="exp-meta"><span class="exp-type">${exp.type}</span>${exp.location ? " · " + exp.location : ""}</div>
     <div class="exp-details">
       <ul>
         ${exp.bullets.map((b) => `<li>${b}</li>`).join("")}
@@ -110,34 +95,39 @@ allItems.forEach((exp) => {
   const show = item.querySelector(".exp-show");
   const arrow = item.querySelector(".exp-arrow");
   let open = false;
-  function toggle() {
+  function setOpen() {
     open = !open;
     details.classList.toggle("open", open);
     head.setAttribute("aria-expanded", open);
     show.textContent = open ? "Hide details" : "Show details";
     arrow.style.transform = open ? "rotate(180deg)" : "rotate(0)";
   }
-  head.addEventListener("click", toggle);
-  show.addEventListener("click", (e) => { e.preventDefault(); toggle(); });
+  head.addEventListener("click", setOpen);
+  show.addEventListener("click", (e) => { e.preventDefault(); setOpen(); });
   expList.appendChild(item);
 });
 
 // Theme toggle
-const toggle = document.getElementById("themeToggle");
+const themeBtn = document.getElementById("themeToggle");
 const html = document.documentElement;
 const saved = localStorage.getItem("theme");
 if (saved) html.setAttribute("data-theme", saved);
-toggle.addEventListener("click", () => {
+themeBtn.addEventListener("click", () => {
   const next = html.getAttribute("data-theme") === "light" ? "dark" : "light";
   html.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
 });
 
-// GSAP reveal
-gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray(".exp-item, .section-title").forEach((el, i) => {
-  gsap.from(el, {
-    scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none reverse" },
-    opacity: 0, y: 24, duration: 0.6, delay: i * 0.08,
-  });
-});
+// Reveal on scroll (progressive enhancement: no JS means nothing is hidden)
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.08 }
+);
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
