@@ -76,6 +76,7 @@ experiences.forEach((exp) => {
         <div class="exp-company">${exp.company}</div>
       </div>
       <div class="exp-dates">${exp.dates}</div>
+      <span class="exp-arrow">▼</span>
     </div>
     <div class="exp-meta">${exp.location}</div>
     <div class="exp-details">
@@ -89,14 +90,16 @@ experiences.forEach((exp) => {
   const head = item.querySelector(".exp-head");
   const details = item.querySelector(".exp-details");
   const show = item.querySelector(".exp-show");
+  const arrow = item.querySelector(".exp-arrow");
   let open = false;
   function toggle() {
     open = !open;
     details.classList.toggle("open", open);
     head.setAttribute("aria-expanded", open);
     show.textContent = open ? "Hide details" : "Show details";
+    arrow.style.transform = open ? "rotate(180deg)" : "rotate(0)";
   }
-  head.addEventListener("click", (e) => { if (e.target !== show) toggle(); });
+  head.addEventListener("click", toggle);
   show.addEventListener("click", (e) => { e.preventDefault(); toggle(); });
   expList.appendChild(item);
 });
